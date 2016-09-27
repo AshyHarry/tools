@@ -13,6 +13,7 @@ def get_original_data():
         os.makedirs(ori_dir)
     with open(ori_file, 'wb') as fp:
         json.dump(original_data.json(), fp)
+    print 'The original json data has been successfully saved to document_original/original_data.txt ', '!'
     return 0
 
 

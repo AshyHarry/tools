@@ -10,7 +10,7 @@ def download():
     # url_srt_en = url_json['data']['videoList'][3]['subList'][1]['subUrl']
     print url_srt_cn,url_srt_en
     f = urllib2.urlopen(url_srt_en)
-    srt_name = 'harry_en.srt'
+    srt_name = 'harry.srt'
     with open(srt_name, "wb") as srt_cn:
         srt_cn.write(f.read())
 

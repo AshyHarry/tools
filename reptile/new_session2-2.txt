@@ -1,0 +1,768 @@
+[ Silence ] >> This is CS50, Week 1, thought we'd begin with a cookie love story.
+ [ Music ] >> So this was a Scratch project submitted by one of last year's students.
+ And what's nice is because not only is it rather cute, it also draws in all of these fundamentals that we started talking about last week.
+ And if you haven't yourself dived into your own problem set zero, whose PDFs are available online, realize that if something like this, given that it's a minute or so long, kind of looks you know, despite the cutesiness of it, kind of overwhelming in that you don't really know where to begin, how could you possibly sketch out this whole story line.
+ Well, realize one of the themes in this course and really one of the themes in programming and solving any problem with a machine is going to be really to just take small bites one at a time out of these problems until the end result ultimately is that you've actually bitten off a fairly large fairly interesting problem and in the aggregate, you've actually implemented something pretty sophisticated.
+ But if you set out trying to implement this whole story line at once, if you set out trying to implement a cookie love story, it's just not gonna fly.
+ You're gonna run into innumerable bugs most likely, by bugs we mean mistakes, behaviors that you didn't quite intend and yet they seem to be-- and yet your program seems to be misbehaving in some sense.
+ And so with this example here, I thought I'd propose that we consider exactly how you'd go about tackling something like this.
+ Let me restart it but in the smaller scope of this window.
+ And there's a few things going on here, so clearly there is multiple sprite, multiple characters, and recall from last week that each sprite has its own set of strips or programs.
+ The scripts are in the middle, the sprites are on the right hand side, so when I have the stage selected at the moment, I'm seeing the script that are associated with sort of the whole program itself, the so called stage.
+ But I could home in on sprite 1 there and just see this particular sprite script.
+ So now let me actually reverse this and go back to the beginning.
+ So it's a lot just happened here.
+ But how do you go about implementing something like this.
+ Well, honestly start easy.
+ The first thing you probably want to accomplish or at least one thing that seems easy is find the graphic of the cookie sheet that you happen to want for this project.
+ Lay it down and make sure it's in the right position, right? Check.
+ So, we're making progress already.
+ It doesn't do anything but at least that's one bite out of this problem.
+ Now, focus on just one of these sprites.
+ For instance the cookie, the gingerbread man, the gingerbread woman or whichever one of the cookies you want to introduce first and focus just on getting that cookie to dance.
+ And what do we mean by dance? Figure out how you can make it move a little to the left, a little to the right, up and down and then repeat in some kind of looping structure.
+ And then after a few minutes or maybe an hour, you hopefully have at least one dancing cookie.
+ Maybe there is no music, so it's just kind of dancing in the middle of a cookie sheet all by himself.
+ But now at least you have a template that you can base cookies number 2 and 3 and 4 and 5.
+ And if you haven't realized already, do realize per the tutorials that we've linked to online, you can do things like duplicating sprites, you don't have to re-implement the whole thing.
+ And so you can really-- the process starts to pick up traction pretty quickly.
+ Now on the next screen, once this thing resumes, realize that-- come on.
+ [ Background Music ] >> Once we changes phases, realize that a whole lot more was happening on the next screen.
+ In just a moment the hearts are gonna start flowing from bottom to top and the cookies are gonna start moving left and right and they seem to be somewhat synchronized with the music, perhaps based on trial and error by the student who implemented this one.
+ Well, how do you get this hearts to move up and down and seemingly in these random patterns? Well, recall that very basic building block we introduced and 10 or 1 or a hundred.
+ And if you haven't realized already, the whole point of this stage being a rectangle is that ask him to buy the X and Y coordinates there, it's essentially a grid of dots, of so-called pixels that go up, down, left, right, and each of them is a specific address, X comma Y.
+ So if you wanna pick a random location for one of those hearts so it starts from a different place, we'll pick a random X of random number between 1 and 200 or 300, or however wide the stage is, and then use the move block from the appropriate palette to put that's right there, and then start its movement.
+ In other words, when you bite off your own project or when you start off by looking at someone else's projects, either that we looked at last week or some of the innumerable links we included in the specs, focus on just one piece of it, get that working, and then move on to the next.
+ And this really is going to be a recurring theme throughout the course.
+ You can very quickly drive yourself nuts by sitting down, thinking, oh, I can write this program, no sweat, and then you write it and then there's a tiny little mistake here, but then there's a tiny little mistake here and here, and all of these stupid little things cascade until you try running your program, and the thing just doesn't work.
+ And then it's the situation where you just don't know where to begin.
+ So honestly, one of the best strategies in this course and in programming in general is-- generally speaking design, but it's these little tricks of the trade that will honestly make things much more fun, much more easier, and really allow you to focus on the juicy parts of the problem and not little tiny bugs that you may have started tripping over already.
+ So hopefully, approach if you haven't already, problem set zero with that mindset.
+ Take quite literally baby steps.
+ And from each of these individual parts, well, you very likely come out with a very impressive whole.
+ So, with that said, we like to Google ourselves sometimes and so we discovered that FlyBy last night mentioned CS50 among some other courses in its last minute shopping list.
+ So this is to say, for those of you who are joining us today for the first time, that's totally fine.
+ Nothing has been due yet.
+ That's not till Friday, and last week's two lectures are both available online at cs50.
+net.
+ I didn't quite know how to interpret the tag line that was up here.
+ If you zoom in up top, which I can't quite do with a keynote here, it says, "This last minute shopping, bargain hunting.
+" So, I'm not quite sure what the takeaway there is but realize you are perfectly welcome to shop and then still take the course.
+ If you decide to opt in by a pass fail, I just need to sign your white study card or if you wanna decide before the 5th Monday, just grab the pink slip and I can sign that and you can turn that in at any point and I'm happy to chat during break today or after class if you have any questions or concerns.
+ So, where is the support structure thus far? We haven't sectioned yet.
+ That will officially start this Friday.
+ So more details on sectioning on Friday, but do realize that office hours are very much in progress.
+ Our 60 plus person staff has been hanging out in a couple of dining halls on campus, namely the Cabot and Quincy House.
+ Moving forward, we'll actually move some place other than the dining halls but we thought this is a nice way to start the term in a more casual communal environment.
+ But just go to cs50.
+net, click office hours and you'll see the Google Calendar with all of the office hours that are still happening tonight, as well as tomorrow and these are just an opportunity to chat, to ask questions one on one with the teaching fellows or course assistants or frankly just a way to hang out during brain break and work on projects and then see what some of your friends might be tackling themselves.
+ As for sections, there will be what we call super sections this coming Sunday, Monday, Tuesday.
+ CS50 sections are standardized on Sundays, Mondays and Tuesdays but we won't officially assign you to sections for a week or so but unofficially, well, there'll be open sections this coming Sunday, Monday, Tuesday.
+ The schedule is also on the course's website under sections.
+ And these are super sections in just that they are superset of the class.
+ You can go to any one of these times more comfortable, less comfortable, somewhere in between, and the focus of these sections will be on the material cover this week as well as potentially the start of next week and with a focus on problem set 1, which is the second problem set, 0 index which will go out via PDF this weekend.
+ So realize the support structure is now in place and in progress so do just let us know at help@cs50.
+net if you have questions that can't be addressed during office hours.
+ So, we looked last week at Scratch, very briefly, but hopefully you found if you've dived in already that the interface is fairly intuitive and it really just allows you to implement ideas that you conjure up in your mind.
+ Well today we're gonna transition to a more traditional programming language, a lower level programming language if you will where the ideas are pretty much identical to what we've seen last week in what you might have seen in prior courses, but what I thought I'd do is try to set your minds on the equivalence of the ideas we talked about last week, the ideas we'll talk about this week.
+ And even though the syntax, the characters you are about to see on the screen and in programs today onward is a little more arcane, it's a little uglier looking, you've got semicolons and parentheses and fairly arcane syntax, realize that at the end of the day these are just arbitrary human conventions, the ideas are identical to this thing here.
+ >> So this thing here, when green flag clicked say, oh, hi world, this was perhaps the simplest program we could write in Scratch.
+ It's sort of the canonical hello world program as computer scientists call this very simple example.
+ Well, starting today in a language called C, this is going to look like this.
+ So again immediately on first glance, a little more arcane, there are some distracting details, these curly braces, the semicolon, the quotation marks.
+ But if you avoid all of these minutia and focus really just on the idea, it looks like what was a blue say block, a so called statement, is now going to be something called printf where the F happens to stand for formatted.
+ But the string, the sentence or the words that we're displaying on the screen, previously you clicked on a little white text field and typed it in, well now you're gonna do the same thing at the keyboard but you're gonna have to sandwich it in between double quotation marks.
+ So it's these little differences that you'll very quickly acclimate to but it's these stupid little syntactic details that trips off, especially those less comfortable early on because if you leave out a single character, namely that semicolon on the right hand side, nothing will work.
+ Which is an unfortunate design decision made many years ago with this particular language.
+ More modern languages as we'll see toward the tail end of the semester are a little more generous with some of these details.
+ Well, this statement here say "oh hi world" is going to map very specifically to this line here.
+ What about some of the other constructs we looked at? Well loops are something we talked briefly about.
+ There is something you perhaps employed.
+ Certainly in the cookie love story was there a looping going on.
+ The cookies were going back and forth and back and forth and the hearts up and down, well, this thing that we had that called a loop last week with a forever block with a statement inside of it is simply gonna look a little something like this.
+ So while.
+ And thankfully the jargon that the authors of this language chose early on conjures up the right ideas in your mind while something is true.
+ So here I've hardcoded the word true which is actually deliberately inducing what we called what last week.
+ So a loop or an infinite loop, because true is always true, there is no-- nothing on the screen that seems to change this keyword true, so this is actually a deliberate infinite loop, but so was that thing up top to forever say hi or whatever it is you wanted to do.
+ So the translation here is that whereas last week and in Scratch, the looping structures are yellow and have kind of this brace structure to them.
+ Well in C and many similar languages, you have to implement that same bracing structure with your keyboard using an open curly brace and a closed curly brace, so a tiny little detail.
+ On last week too we saw-- and in your projects you might have seen a so-called repeat loop.
+ Same idea.
+ But whereas the other one was obviously forever, this allows you to specify a finite number of times that you wanna do something.
+ Here I arbitrarily chose 10.
+ How can you implement that same idea? Well in C and other languages that we'll see this semester, you use what's called the for loop, and this as syntax isn't quite as straightforward but once you know what to look for, it's very easy to understand.
+ So for, so for the following definition.
+ Now you have a set of parentheses as we'll see in actual code and then I have int I equal 0.
+ So int is gonna stand for integer, it's just a number.
+ I is the generic variable that you use when you really just wanna count something and don't really care what its name is.
+ The semicolon just separates this from the rest.
+ The I less than 10 says do the following as long as I is less than 10.
+ And then on the right hand side I++, we saw that in pseudocode with our socks example last week that just says increment I.
+ So, long story short after this fairly arcane syntax, the end result is completely straightforward, do the following 10 times.
+ But because we're now programming a computer at a lower level and because as we said last week, you really have to be precise and then careful to instruct this machine, this fairly dumb machine that will only do what you tell it to do very specific instructions, do we have to use a more precise syntax than just a puzzle piece might have previously allowed.
+ Well what about variables.
+ Well, this block here on the left that I came up with arbitrarily sets a variable called counter equal to 0 and then it forever says that counters value and then it changes the counter by 1.
+ So this is like counter ++.
+ Well, what is code like that from the world of Scratch gonna look like? Well, you can implement this in a few different ways but here's one approach that uses some of the syntax we just looked at, int counter equals 0.
+ So declare as we'll say a variable, a placeholder called counter.
+ It's gonna hold integers so I have to say int as we'll see and set it equal to 0.
+ Then we have to steal the code from earlier to do a forever loop, a while true loop and then I'm gonna go ahead and use that printf thing that we saw.
+ So everything is kind of coming together now with then the counter ++.
+ So again, idea on the left, fairly straightforward, idea on the right, same but just looks a little different.
+ And lastly with these things called Boolean expressions that allow you to check if something is true or false, well, we've seen this in our loops just a moment ago but in Scratch we might have asked the question, is X less than Y or is X less than Y and Y is less than Z.
+ So you can conjoin these expressions into ended expressions so to speak.
+ Well, the syntax is gonna be pretty similar.
+ The green block is gonna become a pair of parentheses.
+ The less than side is gonna be a less than sign, and then the word and is going to become not one but two ampersands back to back, and we'll see why it's two and not one before long.
+ But that's it in terms of the conversion.
+ And with actually using those Boolean expressions on the left, if X is less than Y say, "X is less than Y" else if X is greater than Y say, "X is greater then Y" else say, "X is equal to Y.
+" So, fairly simple idea, who knows why we actually care what the values of X or Y are at least in this out of context.
+ But to translate this now to a language C, you've got some curly braces, you got an if, some parentheses, but now we're just building on some of the syntax we introduced before.
+ So it's all fairly well convertible from one to the other.
+ And lastly, you might have recalled the Fruit-craft RPG game that we played briefly with the little man that moves up and down, left and right and collects like oranges and apples and then brings them into the store.
+ Well, that program was interesting because it had an inventory which was implemented in Scratch with a list which is kind of like a container that you can add things to again and again.
+ Well, C has things that are similar to list.
+ They're called arrays.
+ We'll see they're not quite as versatile as Scratch's little inventory capability.
+ You're gonna have to be a little more careful when it comes to adding stuff to an array and removing it from.
+ But what looks like this orange block as of now in Scratch, add orange to your so called inventory, well, it's gonna take at least two lines of code in C to actually create the inventory array with this first line and then put something like the word orange inside of it.
+ But at the end of the day, the point of the slides is not to expect you to now go write programs in C but really to just remind you that, hey, if you ever get distracted from some of the minutia that is the semicolons, parentheses, and what is very new to many of you, it's really no different than the fun and games we implemented with Scratch last week.
+ So perhaps take some comfort from that.
+ So here is the simplest program which is perhaps an ironic statement that you can implement with this language called C.
+ So it takes a few lines of code to actually get something up and running and as you'll recall last Friday, I didn't even get this up and running because part of the process of writing a program is to one, write it.
+ So write the so called source code which is in a specific language.
+ Last week we did the socks thing and that was in pseudocode.
+ It's just some bogus language we made up that's kind of English-like, kind of look C-like now that you've seen this syntax, but it was just an arbitrary language.
+ Today, I'm gonna start writing C code with you but I can't just write it and expect it to do anything.
+ What was the key step that I said I needed to do on Friday but failed very publicly to do so? >> Okay, I did a lot of things wrong.
+ Okay, so a compiler.
+ So I tried running a program in this little black and white window called GCC and we'll see it today working properly that is a so called compiler.
+ So writing a program at least in this language is a two-step process.
+ You write the source code, the stuff that looks like this and then you save your file, and now you just have a text file.
+ The convention is not to call it something dot txt but something dot C, just a convention.
+ But that's not enough because computers at the end of the day only understand 0s and 1s and what you [inaudible] and is clearly not a collection of 0s and 1s.
+ So you have to somehow convert the source code, the C code into 0s and 1s and for that process there exist this tool called a compiler that someone else wrote that takes this stuff as input and produces this stuff as output.
+ And it's the 0s and 1s, that notice they're in patterns of 8 generally or chunks of 8, the so called byte that the actual CPU understands.
+ And later in the semester we will tease apart just a little bit what these patterns are and why they do what they do.
+ But for those of you who decide to go on in computer science realize there is a whole interesting world that uses details like these in the world of networking, in hardware, to actually solve some real world problems.
+ So with that said, let's write our first program.
+ Probably I shouldn't have said it's a two-step process 'cause it's a three-step process to actually write and run it, and the third step is just going to be to run it.
+ So, let's go ahead and do this.
+ How am I gonna go about writing a program? Well, it turns out you can write a program on most any computer.
+ For instance I have an Apple Mac here but you can do this on Windows computers, on Linux computers if you have a compiler installed.
+ It's pretty easy to do this on Macintosh computers.
+ You can just go to Apple's website and download the appropriate link.
+ It's a little more involved on a PC but it's all free, the software you can download, and Linux in similar operating systems generally come with a compiler or you run a simple command to get it.
+ But long story short, all of you who own laptops or desktops could probably be writing programs, trivial though this one is up until now even if you didn't actually know it.
+ >> So this time I had the foresight to install this compiler but what I'm gonna do is this.
+ I'm gonna run the command called Nano which is a very simple program.
+ It is similar in spirit to Text Edit on a Mac or Notepad on a PC.
+ I'm gonna call my file hello.
+c.
+ There's a little bit of distraction here but this is because this is not a GUI, a graphical user interface, this is a CLI, command-line interface, which just means there are no windows and icons.
+ It's really a text based interface.
+ Now just to get used to the conventions, but for 1 to start writing programs, notice at the top in this window just reminds you what you're working on.
+ The top left tells you what program you're actually using.
+ The interesting stuff is at the bottom.
+ And most of these commands you don't actually need but this little caret symbol means control, so every keyboard these days has a control key so you hold that and hit X for instance to exit the program.
+ You hit control O to write out your program.
+ I'm not sure why it's not S for save but it's write out and that means save.
+ And so frankly this is pretty much all you need to know with Nano to get up and running.
+ So now let me recreate this program from memory.
+ I think the first thing I saw on the slide was include standard io.
+h, then I said int main, some parentheses and curly braces.
+ And then I said printf "Oh hi world!".
+ For some reason I had this backslash N, a close quote, parenthesis, semicolon, close curly brace.
+ Alright, so maybe a little underwhelming and we saw already what this program is going to do but let's just go through this process once before we start doing more interesting things and then we'll come back and at least give you a hint of what some of these syntactic details are doing.
+ So I hit control X.
+ It's very unnecessarily arcanely saying save modified buffer, and then answering no will destroy changes.
+ So that part is pretty clear, so hit Y for yes.
+ Then it's saying name filename to write.
+ It's just asking you if you wanna change the name.
+ I'm just gonna hit enter to leave it alone, and now I'm back at the prompt.
+ So generally, if you don't get an error message in a command line environment like this, that's good.
+ If nothing bad happens, it means what didn't happen is good.
+ So with the fact that I'm now just back at my prompt is a good thing so now if I type this command GCC hello.
+c, this is gonna run this program that Apple wrote in this case or someone else wrote called GCC.
+ It's gonna take as input hello.
+c and what it's gonna produce as output is something called a.
+out.
+ Nothing happened.
+ Why? That's good.
+ That means there is in fact something there.
+ So this has created a file that just by convention happens to be called a.
+out.
+ Why? Well, out presumably 'cause it's output, a because it's the first letter of the alphabet.
+ It was really that creative.
+ Now I'm typing dot slash as a convention.
+ So little tricks you'll start to pick up.
+ Because I know this program was saved by default into my current folder, my current directory, so dot slash means run the program called a.
+out that's right here in my current directory not in, like, my applications folder or somewhere else.
+ So now I hit enter and voila! I see, oh, hi world.
+ So how did this actually work? Well, let's just give a teaser of some of the details before we move on to actual interesting functionality.
+ So, we'll see in a moment that that first line at the very top, sharp include, says include some code, some source code that someone else wrote.
+ Because what you don't see in this file is any code that actually says put a letter of the alphabet at the top left hand corner of the screen and then put the next character to the right in other words, I'm taking for granted at this moment in time that my computer knows how to print something to the screen.
+ But that was not always the case.
+ Someone-- or someone had to implement, had to write a tool called printf that itself takes input between quotes and produces as output some characters on the screen.
+ Now, how can I use code that someone else wrote? Well, I include what's called a header file as we'll call it.
+ This file here is called standard I/O or stdio.
+h and this is just another text file someone else wrote many years ago and by using that line of code there, I'm telling the computer, give me acces to this code that this other person wrote that's in that file.
+ What's in that file? Well, a whole bunch of stuff but the only one I care about right now is a tool called printf.
+ And henceforth I'm gonna start calling these tools, these monickers that I can use as building blocks in my own program, it's gonna be called a function as we'll see.
+ Now this other stuff here, int, we'll come back to that.
+ Main is relevant because when you start writing a program in Scratch, you used what block as the very first usually? [ Inaudible Remark ] >> Yeah, so when green flag clicked, and that's kind of the very explicit way of saying when you start this program by clicking in the green flag, here is what's gonna get executed first.
+ Well in C, the counterpart is main.
+ And for now I'm just doing main open paren and close paren.
+ Before long we'll see that you can actually put things inside those parentheses which make your programs even more useful.
+ The curly brace is kind of similar to Scratch's interlocking mechanism that you really see explicitly with for loops.
+ Well, for a thing called main which itself is a function but a function I wrote, a tool I am writing at the moment not like printf which someone else wrote long ago, I have to say where does main start, where does main end, and I do that by using these curly braces.
+ Everything inside of the curly braces is the code I am writing.
+ Finally, what code did I write? Well, just this line of code here.
+ Now, you can probably guess what this piece of syntax does.
+ So the double quote says here comes the input.
+ This is what you typed into the white box in Scratch and anyone perhaps already familiar, the backslash N is the shorthand way of saying what? [ Inaudible Remark ] >> So it's a new line character.
+ So things break if you try-- if the computer tries to take you too literally so it would not be correct generally to do something like that.
+ Even though this looks like what the out-- this looks like the output you want, "Oh, hi world" and then everything else should go on the next line.
+ Things generally break and this is also not very readable.
+ You can imagine having many lines of code where all of a sudden your closed quote is on the next line all the way on the left.
+ Things very quickly get ugly and you might even already be feeling this tension in Scratch if you're dragging and dropping and moving things around.
+ Once your programs get fairly complex, it becomes harder and harder to find things and to tweak things if you're not being organized.
+ So you have what are called escape characters like backslash N that is the shorthand notation of telling the computer put a new line character here.
+ So I'm gonna go ahead and save this again.
+ And to recap, we just did three steps.
+ We did Nano for hello.
+c or whatever I called it, GCC to actually compile into 0s and 1, and then step three is to actually run it.
+ Well a.
+out is a pretty stupid name for a program, right? It would kind of be unfortunate if every program that Microsoft made and Apple made by default was called a.
+out.
+ You couldn't really distinguish them, so certainly it has the worlds come up with names for programs.
+ Well, how do you do this with GCC? Well, you can specify what's called a switch or a flag.
+ So in general, when you're running command line programs, they can take input or arguments or parameters or switches or flags.
+ There are so many synonyms for these things.
+ It's just hard to keep track of them at first but they all generally mean the same thing, provide additional input to this program called GCC by just specifying it on the command line.
+ So you see two similarities between the first version, GCC hello.
+c, and the second version but obviously I've just added which part for that second line.
+ [ Inaudible Remark ] >> Yeah, dash O hello.
+ And this is arbitrary, but dash O probably means output.
+ So output, what do you wanna output? A file called hello and not the default a.
+out.
+ So, let's try this, let me go ahead and run GCC again on hello.
+c but let me move my cursor over and say dash little o, capitalization is usually important, and hello, then hit enter and now I can do dot slash, just say run the hello program I put right here by default, it's not elsewhere on my hard drive, hello, enter and there in fact is that program.
+ So, it's getting more interesting but we'll soon see that things don't always compile as easily as this command suggests.
+ The lines of commands we have to write get increasingly complex.
+ So it turns out a really nice shortcut on most systems, oops, is to say if you have a file called hello.
+c and you wanna turn it into a program called hello, well, just write in the command makeHello and it will do all of that for you automatically and hand you a program called hello.
+ And we'll see why this is increasingly useful as our programs get more and more interesting.
+ So with that said, where are you actually going to run these programs? So, I'm doing this on my Mac.
+ You might have a Mac, you might have a PC, you might have a Linux machine or any number of other devices and this very quickly becomes a bit of a nightmare because everyone has a slightly different configuration.
+ It's hard to answer questions and whatnot and you don't necessarily have access to the same tools unless you yourself go through the process of configuring your machine manually by following many long sequences of steps.
+ So, an alternative to that that is incredibly common in just the programming world and in industry is to actually not write programs on your own personal computer but to actually write and run them on a server, someplace where the software is all standardized.
+ It is internet accessible so you can access it most anywhere anytime and you can also access tools and software and tricks that the staff have made available.
+ So what you'll see in problem set 0 or problem set 1 is that you'll soon have access to what we call the CS50 cloud which is a bunch of servers that live on campus and on which you will all have a username and password.
+ By default, it's gonna be the same username as you got for your FAS accounts because FAS also has its own systems and you use those usernames and passwords to log into the labs and whatnot.
+ But just realize as a teaser coming for problem set 1 will be instructions on how to activate your so called cloud account and it's on the CS50 cloud that you'll be writing your programs, compiling your programs, testing your programs, running your websites ultimately.
+ Just to fast forward to the end of the course with a little teaser, a lot of students for final projects in the CS50 fair like to host their final projects, if they're websites, at a real domain name, for instance isawyouharvard.
+com or any-- or shuttleboy.
+com or whatever name you actually find available and you can buy for like 9.
+99 from various websites.
+ >> Well, what we'll be able to do this fall for you because all of the code will live centrally on this cluster of systems called the cloud is if you do decide, mostly for fun or for entrepreneurial reasons that you wanna go buy your own domain name, it's very easy to map that domain name to our servers so that even though the server itself is gonna be called cloud.
+cs50.
+net, your users, your friends, your family can actually visit isawyouharvard.
+com and the internet will know that isawyouhavard.
+com or your own domain name actually lives here.
+ So, we'll do all of that hosting for you which will be a nice way of giving a little more personal touch to your final projects if you decide to implement something web based and would like your own so called domain.
+ Alright, so let's now start doing more interesting things than just saying hello ad nauseam to ourselves.
+ So, the jargon with that will-- with which we'll proceed is this.
+ So a function is just a little tool.
+ It's like a miniature program that you can write or use that someone else wrote and the first one we ourselves wrote is main and henceforth in this language called C just like every Scratch project begins with one green flag clicked so our program is gonna be called-- start with this thing called main.
+ The standard library, that first line of code, it's not strictly necessary but any time you use a function, a tool that someone else wrote that lives in that so called library, you do need that include line as we'll see.
+ And if you don't include it, GCC, the compiler will yell at you.
+ And we'll see innumerable error messages today and onward as with you working at home ends on the problem sets 'cause this is the way you learn.
+ And it's actually a useful feedback mechanism.
+ But because C is a fairly old language and fairly low level, it's actually hard to do easy things.
+ Even those of you who've taken AP computer science or something similar perhaps recall that even just getting a piece of input from the user is ridiculously not obvious.
+ You need multiple lines of code, you need these days to use something called a scanner class.
+ You have to jump through hoops just to ask the user for a piece of input which should be really the thing a language prioritizes.
+ So, what we do at the start of the semester, and these are essentially training wheels we very quickly take off once you get more comfortable, we provide you with our own library.
+ It's not called standard io.
+h, it's called cs50.
+h.
+ That's where the code we wrote for you will live and then we'll see how to do this in examples today onward but we wrote for you some tools, some functions that calls GetChar for get a character.
+ If you just want a single letter from the user, GetDouble.
+ This is a type of number that we'll see in a bit.
+ GetFloating-- GetFloat for a floating point number.
+ GetInt, GetLong long, we'll see what that redundancy means, and GetString.
+ And the last is perhaps the most useful at least at first glance.
+ So, let's go ahead and do a little something with these.
+ I'm gonna go away from my own Mac and I'm gonna go to the standard environment.
+ And the means by which I connect to the so called cloud is with a command line program or GUI program.
+ You'll see how to do this via some tutorials online for problem set 1.
+ But on the Mac, I'm gonna run this program called Terminal.
+ It comes with all Macs by default.
+ PC users will wanna use something called PuTTY which is free or secureCRT with Harvard has available.
+ But again, more on that in problem set 1.
+ I'm gonna go ahead and run this command, SSH, which stands for Secure Shell.
+ This just means making encrypted connection to someone else's server.
+ Malan@cloud.
+cs50.
+net, enter.
+ It's asking me now for my password.
+ And now I met a prompt that says who I am as a little reminder.
+ Where I am? And then in the parentheses we'll see in a moment, it tells me what folder I am inside of.
+ So let's go ahead and write a slightly more interesting program.
+ Among your printouts today, even though I generally won't bother printing slides since they're fairly minimalist, we will typically print source codes.
+ You can actually take notes and don't have to scribble everything down that you see on the screen.
+ Every file or program that you see here in this packet is alphabetically listed.
+ So if I say hello.
+c which actually doesn't exist in here but hi1.
+c does, you'll find it alphabetically.
+ So let's take a look at this, hi2.
+c.
+ Actually I'm gonna use a different-- I'm gonna do a small cheat today.
+ Rather than use nano on this computer, I'm gonna use a program called Vim, which is just another text editor.
+ It's more like a word processor than it is a simple text editor.
+ So, let's go ahead and open in your printouts if you would hi2.
+c.
+ So first of all, there're a few more lines of code here.
+ There's a whole bunch of stuff at the top which is wrapping in an ugly way 'cause I've made my font so big.
+ But there're a few details to take away.
+ So when you're writing a program in this language and many others, if you wanna make a comment to yourself or for other people who are reading this with their TF or fellow colleagues, you use what are called comments.
+ So at top left we have a slash and a star and that says everything that follows that-- those symbols is just a comment.
+ It's not going to get converted into 0s and 1s.
+ It's just for humans.
+ The fact that I have this star here, this star here, this star here, is really just 'cause I'm a little anal and it looks pretty to make a little box out of everything but it's not strictly necessary.
+ The only thing that matters is the slash star here and the slash star at the bottom of this.
+ All of those are comments.
+ So let's actually scroll down to the interesting stuff here.
+ And as an aside, those in the room who are among those more comfortable, even if we're not quite filling in blanks today, realize we will very quickly entice you with details that you don't already know.
+ Today is meant to level the playing field so to speak.
+ So here we have the code you have printed before you.
+ I'm gonna zoom in a little more and notice it's pretty much 1, 2, 3, 4, 5, 6, 7, 8, 9 lines of code and that's kind of rounding up because of the white space.
+ So what's going on? Well, the first line of code, I'll fix the purple next time around so it's more legible.
+ But this says include and this says include a file called cs50.
+h that lives in some special place on the server that the cs50 staff wrote.
+ The next line of code says include standard io.
+h which just as a little sanity check contains among other things, printf.
+ So not the actual function as we'll see printf.
+ Just the .
+h file as we'll see is obviously named different than a .
+c file.
+ In a .
+h file, it's generally the names of functions other people wrote.
+ In .
+c files are the actual co-- is the actual code that other people wrote.
+ All you have to include in your own programs is the so-called header file.
+ And that's what cs50.
+h and-- standard io.
+h are but we'll see those in more detail before long.
+ So for now, just take it on faith that you'll have to say int before you say main.
+ Then you say main, open parenthesis, close parenthesis, open curly brace.
+ So now after all these stupid setup, we can finally dive in to the actual program.
+ Now this program's a little different from what we saw before because it's obviously not gonna say oh, It's going to say oh, hi David presumably.
+ That part is uninteresting but how is it doing this? Well, a few details, a few building blocks we can start using in more compelling ways.
+ So previously in the slides, I said there's gonna be things like ints or integers.
+ Well, ints are only so useful.
+ Sometimes you actually want words and characters.
+ Fast forward mid-semester when we talk about cryptography and scrambling information, we need the ability to express ourselves in words, not just numbers, and we have that already.
+ So if I want to use a string as we'll call it which is a word or phrase generally, they always go between double quotes, hence the quotes around David, and they are double quotes not single quotes intentionally.
+ On the left hand side string name equals, well, what would we call this thing called name, in general, using last week's nomenclature? That's just a variable, right? It's more interestingly named an X or Y or Z.
+ If we named it based on what it is, it's a name.
+ So it's-- the name of the variable is name.
+ Now, what type of variable is this? Well, unfortunately in C, you have to be ever so specific as to what you wanna put in the variable.
+ So whereas before I mentioned int, turns out if you wanna put a string in a variable, you have to say this is a string.
+ Now at this point in the story, I have a variable called name, stored inside of that is the string, literally David.
+ What do I now want to do with this variable? Well, here is the F in printf for formatted printing.
+ Well, before I just hardcoded a string inside of printf's double quotes.
+ This time, I've done the same thing but there's a little curiosity here.
+ There's this percent S sign.
+ So this is a so-called format string.
+ It's just a placeholder that says I don't yet know what I wanna put here but I wanna put something, let me get back to you in just a moment.
+ Well, in just a moment, it happens right after the comma.
+ Notice I close the quotes after I'm putting a new line-- after I'm putting this new line, but then to the right hand side is comma name.
+ So before we use printf, a function, and we passed in one input and input henceforth we're gonna call arguments or parameters.
+ It's just an input to a function, the thing inside parentheses.
+ But sometimes you can pass multiple things inside those parentheses, and so you separate them by commas.
+ What do I wanna pass in name? And so now if you follow the intuition here, percent S is the placeholder, name is what I want to place there.
+ So the end result, because someone wrote this function years ago is that printf takes this thing, takes this thing, plops David inside the middle of that formatted string and then renders the whole result.
+ So let me go ahead and quit from this program.
+ And let me go ahead and run-- how do I compile this? GCC, hi2.
+c, enter.
+ It seems to work.
+ A.
+out enter and oh, hi David.
+ Alright, so now let's make things a little more interesting.
+ Let's go into hi3.
+c.
+ So again I have some comments up top.
+ As a matter of convention and good style which is another theme of the course that we'll focus more on on Friday onward, it's generally good to-- good style to actually describe in English even succinct English, what your program is doing.
+ Because as you'll soon find, when you're writing programs which very quickly becomes easy, you'll find that even you the next morning have no idea what this code does for whatever reason, and just having some English comments is a huge boon to comprehension for yourself and others.
+ >> So now we can finally do something more interactive.
+ Right now, we're finally getting to the point of scratch which can take some input from the user.
+ It's not nearly as graphical but at least we're not hardcoding programs that are otherwise uninteresting.
+ So here we go.
+ The top of this program is the same.
+ Include our library, include the standard library.
+ Here's my pro-- here's my function called main.
+ What do I now wanna do? Well, I don't have to call printf just once.
+ If I wanna say something, do something, then say something else, I just call printf twice.
+ So notice here I'm printing out state your name, a colon and a space.
+ No new line just 'cause I made an aesthetic call that this looks kinda nice if the prompt stays on the same line.
+ Now, I'm using this thing.
+ So unlike printf which someone else wrote and is in the standard library, as we-- I mentioned a moment ago, GetString is in the-- says 50 library.
+ So this is again part of the package we provide you within the server for the first few weeks to just make this kind of intuitively easy stuff, mechanically easy as well.
+ So let's see what's going on here.
+ Well, printf's job in like is to print something in the screen-- to the screen.
+ But GetString as its name implies is supposed to get something from the user.
+ But odds are it's not sufficient just to get it from the user, I, the human need to be handed whatever this function got from the user in some form.
+ Odds are when this function called  gets a string from the user by expecting them to manipulate their keyboard with their fingers, I need to-- initiatively I'm gonna get back a sentence or a word or a phrase or something.
+ And the reason that we now on the second line have the equal sign is because this function GetString has what's called a return value.
+ It not only does something, as we'll see, it also gets something and it has to hand it back to me.
+ Otherwise, what was the point of getting a string from the user if I'm not handed the result to actually do something interesting with.
+ So, thankfully I know I have storage space for return values.
+ I can just whip out a variable, this time it's gonna be dynamically stored there.
+ I'm not hardcoding in D-A-V-I-D anymore but I can still use a variable.
+ So long as I say I'm gonna put a string here, it doesn't matter what string it is, GetString is gonna take care of the job of getting it from the user.
+ And then I'm gonna use the same printf line after that to actually plop it into this formatted string.
+ Let me go ahead and run this now.
+ So, GCC hi3.
+c and I'm getting a little tired of a.
+out.
+ So if I wanna give this thing a name I do, you know, dash oh hi 3 or whatever I wanna call it.
+ Enter.
+ Problem, first of many, but let's solve it together.
+ And then remember how you solve this 'cause otherwise completely useless exercise.
+ So what's the error here? Well, the font is big.
+ Normally the errors don't look this complicated but they still look fairly arcane.
+ So, on the one hand, I've run this command here, GCC dash O and this projector I'm highlighting things all day long on the screen here and you're not seeing any of it unfortunately it seems on this projector.
+ But what I ran was GCC and then I get back this big error message.
+ So this thing here that starts with slash temp, that's pretty useless information.
+ It's just that GCC when compiling your program was apparently using some temporary storage space in a folder called temp, not of real consequence to me.
+ But now the error message gets interesting.
+ It says undefined reference to GetString then collect to LD, LD stands for loader and that will be a useful detail to keep in mind later on.
+ Loader returned 1 exit status.
+ So, what is it sound like is the problem intuitively here? So if you know the answer and know what the fix is don't answer this.
+ But if intuitively, you just have a sense of what the problem is.
+ >> You can't find GetString.
+ >> It can't find GetString right? Someone else-- thank you.
+ Someone else wrote GetString namely CS50.
+ I have included it using the cs50.
+h but that only gives me access in the source code to actually using it by name.
+ The bits, the zeros and ones that compose the library are actually in that file called cs50.
+c but those bits live or-- even that's a white lie.
+ They technically live in a file, as we'll eventually see called cs50.
+o.
+ But for now, I have made no mentioned of cs50.
+c.
+ I've made no mentioned of cs50.
+o.
+ So, the problem at hand really reduces to GSS knowing that I wanna use a function called GetString but it doesn't know where the zeros and ones are so how can it possibly integrate our zeros and ones that the staff wrote into the zeros and ones you wrote to produce one collective whole.
+ So it turns out that there's a two-step process.
+ When you want to use a library like CS50's, you can't just run GCC on your program.
+ You also have to tell the compiler at the very end of your command-- you know what, let me use the library with the so called switch/l so that's an L not a 1.
+ So a dash lowercase L and then what library? The CS50 library.
+ So this is pretty-- similarly might we say this dash L STD for standard, for Standard I/O.
+ But it turns out that because the Standard I/O Library is so common they don't force people to type this all day long because it's just so commonly used.
+ Whereas CS50 is not nearly as popular a library in the world, and so you'll have to explicitly say dash L CS50.
+ Why is there no space? Stupid convention, but you have to do dash L and then the name of the library.
+ So now let's hit Enter.
+ Better! So no error messages means success is probably what has happened.
+ HI3 Enter.
+ Oh-oh.
+ Command not found.
+ Why is this now a problem? I did call it hi3 right? I did use the dash O and I said hi3 dash O.
+ So why is the command not found? Yeah? >> It didn't know where hi3 is.
+ >> So it doesn't know where hi3 is.
+ Now this is-- again, testament to the fact that computers, you know, sophisticated or scary as they might seem to some, they're pretty stupid devices.
+ Unless you tell them what to do they're not gonna know how to do it.
+ And by default a Mac and a PC generally only know programs that happen to live in your C colon backslash programs file or in the Mac on slash applications.
+ Whereas Hi3, I just created, it happens to live in this directory but my computer doesn't know that so you do dot slash which says current directory.
+ Dot is my current directory, slash means Hi3 is located here.
+ So now my program's running.
+ State your name, excellent.
+ We have just recreated what I could've implemented moments ago with something more dynamic.
+ Well-- or with something static.
+ Let's do this once more.
+ So, state your name.
+ Let's do Cansu, enter.
+ An S in the side so Cansu, that was spelled C-A-N-S-U.
+ Her name is pronounced Cansu so she will appreciate your keeping that in mind when you say hello to her in person, Cansu being our head TF.
+ So Cansu, oh hi Cansu! And we can do this all day long.
+ So we can provide any form of input here and the program will just keep working.
+ But we can also get a little manipulative.
+ So, it turns out and this is a hint at some of the security issues we'll discuss.
+ Sometimes you can mess with the computer, for better or for worse.
+ And give it for instance nothing.
+ Well, this is weird.
+ This time I did nothing and so it just said oh, hi null.
+ So that's kind of interesting.
+ And it turns out-- a little teaser for our security discussion as time passes that a lot of the times when software is compromised and you download like a cracked version of Photoshop or something like that.
+ Or a lot of the times when a website is compromised and you're able to steal someone's usernames and passwords, very often are the result of simple little things like this.
+ Notice in this program I have not checked whether or not the user actually provided input.
+ I have not checked the length of the variable called nan.
+ I have not checked that something actually came back to GetString.
+ In fact, if I don't hit the right key on the keyboard like D-A-V-I-D and enter but instead hit a special command that says, I'm not gonna give you a string at all.
+ Weird things, bad things can happen and so one of the lessons too that will be repeated throughout the course is to actually rigorously error check and make sure that you're always thinking about your user being a bad guy.
+ So an adversary who's actually trying to break your programs 'cause frankly too much software these days is not written with a paranoia in mind.
+ So with that said, any questions on some the basic thus far? >> Yes.
+ >> Yeah.
+ >> Okay.
+ Now, I mean.
+ I got string and it went along [inaudible] but what does that actually mean? Is it is just like a string of words or-- >> What does-- what does what mean? A string? >> Like what is that actually behind it? >> So a good question.
+ So just-- and we will come back to this and flush out some of these lower level details.
+ But for now, today's teaser will be this.
+ We know already and we know last week from our demonstration of the floppy disks and such that there're various forms of memory inside of a computer.
+ We know that there're hard disks for instance but there's also RAM.
+ RAM being the one-- the memory where things are stored temporarily when you're running a program.
+ Well, RAM you might have a gigabyte of RAM these days or two gigabytes.
+ Now the byte is the key word there.
+ Even though we say gigabyte that really means billion bytes.
+ So that means if you-- whether you own a Mac, PC or whatever, you have a whole chunk of RAM memory which you can draw for instance as a rectangle, if you can't quite see.
+ It's just a rectangle.
+ And because there are a billion bytes accessible to us, that's-- essentially means well we can just call that byte number zero.
+ We can call this byte number one, byte number two, byte number three.
+ Again, for those-- for whom this is blocked, I'm just dividing the rectangle into smaller squares which is to say that memory is addressable.
+ You can number every single byte just like you can number every house on a street.
+ So now, in a program and you're asking the user for a string.
+ A string is just a sequence of characters.
+ In this case, it's a sequence of ASCII characters.
+ And ASCII recalls the code that we talked about last week.
+ Capital A is number 65.
+ So we talked about how the computers represent characters.
+ So when you get a string like D-A-V-I-D, what's really happening is inside your computer's RAM is going a byte where there's some zeros and ones.
+ >> But if you actually do the math, those zeros and ones translate to an ASCII character which is D which is gonna be a 65, 66, 67, 68 would be the letter D.
+ So similarly would there be the number 65 next to this then the corresponding number for V-I-D and then there's generally a special character at the end that looks like a zero that says end of string here.
+ So when we call GetString, the function that the cs50 staff wrote.
+ What we are doing is figuring out how to get input from the user at the keyboard into individual chunks of memory like that.
+ And when we return the string to you we're essentially telling you where this chunk of memory is.
+ So I can now proceed to print it, change it, manipulate it, or what now.
+ [ Inaudible Remark ] >> Those bytes in the row are called-- >> A string.
+ >> Exactly.
+ A string is a contiguous sequence of characters aka bytes.
+ Other questions? Yes? >> What exactly is the difference with this system that we have here of compiling and say another compiler for one like the C++? >> Good question.
+ What is the difference between this program here at GCC and for instance various other compilers DEV++, Visual Studio, Eclipse is another one, NetBeans and so forth? Fundamentally, very little.
+ So generally and those of you coming from high school computer science background probably used An Integrated Development Environment which actually is a gooey with menus and icons and such.
+ And you can write your source code in it but to compile something you don't run a command like GCC and then the name of the file, you instead click a button.
+ We'll actually get back to that point.
+ But as part of a more rigorous introduction to understanding how the machines work and writing programs at this lower level.
+ We start at this lower level with GCC.
+ So really it's just a matter of features.
+ GCC is probably the most popular compiler in the world these days 'cause it's been around so long and a lot of tools are based on it.
+ But it's more limited in its feature set but again will build backup to those features.
+ Other questions? Yeah? >> Before we had the Makefile? >> Uh hmm.
+ >> What's the difference between a compiler and a Makefile? >> Good question, so we didn't have a Makefile yet, more on that in the future.
+ But I do use the command make.
+ Essentially, this command make is just another program that uses GCC to compile my program for me but make is configurable.
+ So where as I currently am manually typing like dash L cs50 and dash O hello.
+ All of this-- pain in the neck right? If you're writing a program and you're testing it and recompiling.
+ This very quickly gets tedious.
+ Typing the same commands again and again and again make can be configured, as you'll soon see in problem set 2 or 3 to do all these for you.
+ So that we take very quickly the tedium out of-- what is otherwise-- could be a very repetitive process.
+ One more question? Alright, so just to-- yup? >> So the dot slash the A out thing-- >> Uh hmm.
+ >> They only use that when the program that you're running-- the program that you're referring to is going to your computer? >> That's correct.
+ When the program is on your computer you say dot slash and this means on my computer.
+ >> And that's the [inaudible] this other stuff that you would use, the GCC oh hi-- >> Exactly.
+ Now GCC was installed by a special installer.
+ It's elsewhere on my hardware.
+ It's not in my current folder but because I installed it with like a normal installer, double click and all of that.
+ It configured the Mac or in this case, the Linux server to put it into my so-called path which just means I know where it is automatically.
+ But we'll pull back these layers too before long.
+ So a couple of commands and then an interesting code and then the teaser, that's a teaser.
+ So I just type the command LS.
+ So at first this might seem very limited in terms of functionality for you but when I first logged in to that cloud, recall that my prompt looked like this.
+ LS is the list command, those of you who played with DOS before might recall DIR.
+ When you type LS it just lists what's in your current folder, my current folder or my so-called home directory.
+ The folder that I own on the cloud or that I own on my own Mac or my own PC apparently has two folders in it at the moment.
+ One is called SRC for Source and one is called SRC.
+back which was my backup of today's source code in case I screw up.
+ If I want to move into a directory and you'll see-- all of these will be walked through in the first problem set.
+ So realize if it doesn't quite sink in today, not a problems in terms of these low level details.
+ CD is Change Directory.
+ So, I'm gonna go ahead and type CD source, enter.
+ And now notice my prompt changed a little bit.
+ In parenthesis now is a tilde which is shorthand notation for My Home Directory.
+ And then Source which is the current directory I'm in.
+ So now if I type LS again and hit Enter, I see a whole bunch of stuff.
+ And what's in this output are all the C files that we happened to have printouts of for this particular week.
+ This is just the folder containing all of that stuff that we created a PDF out of ultimately.
+ Now, the things in green are special things that I ran.
+ So what's nice if you configure your command line environment appropriately is that things that are so-called executable, programs that you wrote like a.
+out happened to show up as green.
+ Hi3 is green.
+ And then all of these other white files are just source code files, dot C file.
+ And I thought I would tease you with this one here.
+ This is a file called Holloway.
+c.
+ This is-- to be clear, not a program.
+ We'd expect you to write now or perhaps ever since this program was written as part of an obfuscated C contest.
+ So there're a lot of geeks in this world that like to compete against each other by writing the most complicated looking compact programs possible.
+ Even though it would take a computer to even understand how they work.
+ So here is a program.
+ It's not necessary very well formatted but it looks pretty complex, right? I will be happy to admit that I read through this I probably cannot tell you what it did unless I really obsessed over these details.
+ And there's some syntax we haven't seen before.
+ This define keyword is something we'll see later on.
+ It turns out long is another keyword we'll see.
+ These curly-- these square brackets, this is a pretty complicated looking program.
+ So for those more comfortable what does it do? Could you tell? So the winner of this year's contest, this is like 2003 or so.
+ I included the length, let me go ahead and compile this program called Holloway.
+c.
+ No errors which means that's good.
+ I'm gonna run a.
+out and your teaser for the kinds of programs you can write after years and years and years of practice will give you output like this.
+ Let's take a break.
+ >> Let's take five-minute break.
+ Alright, so we are back.
+ Just to plant a couple of seeds so that you've seen it before and then we can revisit in more useful context.
+ Printf, again it's a function, it's a tool someone else wrote.
+ You can invoke it with zero or more arguments or parameters.
+ The result-- or one or more arguments or parameters that result of which is-- that will influence its behavior.
+ So these format strings we saw earlier.
+ We saw percent S which is a placeholder for a string, turns out as you'll see over time there are other placeholders.
+ If you know you're not gonna output a full string but a single character, percent C will get that job done.
+ Percent D is for a digit, like a number or-- one or more digits.
+ If you want to output an integer or other types as we'll see.
+ F is for floating point value which is the fancy way of saying real number.
+ Something with a decimal point and numbers thereafter.
+ And then LLD, we'll see in a moment, this is for particularly long numbers which will become relevant especially as you're trying to process lots of information.
+ This backlash N, it's also a recurring theme and not just in C but in PHP, JavaScript, other languages as well.
+ If you want to escape certain characters, you need to use these so-called escape sequences.
+ So this is a way of experiencing various succinctly.
+ Usually with just two, maybe three characters, a character that you can't really see as well on the screen, otherwise, so a new line character.
+ You can certainly hit Enter but as we saw-- seen that very quickly makes a mess of your code and such and so backslash N is new line.
+ There's also this backslash R.
+ Anyone know what backslash R is? Yeah, so this is a carriage return.
+ So if you've ever seen or used an old school typewriter, you might recall that when you're typing something out on an old mechanical typewriter, when you like hit the char-- when you hit the enter key to move the head back to the left hand side to the next line or you would pull down some lever, it was really a two part process.
+ Pulling this lever or pushing the button would actually rotate the paper enough so that you'd be on a new line and it would also move the little imprinting head that prints the letters of the alphabet and such all the way to the left.
+ So you can think of a new line as being rolling the paper up so you're on a new line but a carriage return moves the cursor or moves that writing head all the way back to the left.
+ Now, in the world of Linux and Unix more generally, both of which are our operating systems that had been around for many, many years, Mac OS is based on one of-- one version thereof.
+ I mean, you'll play with it in great-- with great delight this semester, you will see that backslash N is the standard in any text file for creating what we know as new line characters.
+ In other words, if you pull up on a Linux system, the equivalent nano or this thing called Vim or the equivalent in general of Text Edit or Notepad and you save that text file, what is-- and anytime you hit the enter key, what's really being stored in memory, what's really being stored in one of these bytes on disk or in RAM is backslash N.
+ Unfortunately, in the Windows world, they decided years ago that they would store not only backslash N but much like a typewriter they would store backslash N, backslash-- backslash, sorry, backslash R, backslash N.
+ They store 2 bytes at the end of every line.
+ Every time you hit the enter key in Notepad or in Microsoft Word, small white lie, those two characters end up getting saved in the file.
+ Now, for who knows what reason, Apple decided they would use not backslash N, not backslash or backslash N, they would just use backslash R.
+ This is a complete pain in the neck and at some point in your life, even if it's after the course working in some lab or in some project where you're processing files or just opening files in a program, you'll run into this stupid issue that really is just a result of humans not agreeing on some standard or just doing things differently.
+ >> You can see this frankly in the consumer world.
+ If you've ever noticed, Mac OS has its Apple menu on the top left and Windows has its start menu in the bottom left, really for no compelling reason.
+ In the other context, you know in a Window and a Windows machine, you close it with the X on the top right hand corner, where do you close it in the Mac? Top left hand corner, it's completely stupid, right? It's just different for the sake of being different.
+ Whoever got there first, who cares, same issue with these things here.
+ Now I mention this only because over time, this will become important when you're not reading in files necessarily but writing files.
+ When we get to the spell checking, the dictionary assignment, when you're actually manipulating text files, maybe writing some output, these lower level details that actually empower you to solve problems properly.
+ But there're others, backslash T.
+ Folks in the consulting world and finance world like to share files in Excel format or in Text format that looks like Excel.
+ A CSV file, if you've ever opened a dot CSV file, comma-separated values, that just means it's rows and columns where each of the columns is represented with a comma but you can open them in things like Excel.
+ A TSV file, tab-separated values uses the same thing but a tab character, if you wanna output an actual tab character, the result of hitting the tab key, you do use backslash T.
+ That's so those kinds of files are made.
+ And then sometimes we'll see you need to escape even more useful characters.
+ Sometimes you need to escape a single quote as we'll see.
+ Sometimes you need to escape a double quote.
+ And just intuitively, when might you need to put a backslash in front of a double quote given the examples we've seen thus far? [ Inaudible Remark ] >> What's that? Someone speak up more boldly.
+ [ Inaudible Remark ] >> If it's in the middle of the string.
+ So thus far, the things I put between quotes are just simple things like David or David backslash N, but what if I want to do call my self David in quotes, right? I would need to surround my self with quotes just to pass my self into printf.
+ But if I want those quotes to also appear in the output, I now need to also include not another pair of double quotes but escaped double quotes.
+ The reason being, again, computers are not very bright.
+ If I do this and this but then I also put some other quotes inside, what's the computer potentially gonna think? That it's actually two strings, right? One starts here, one ends here, then there's another and then another.
+ But this is not legit.
+ You can't just take a quoted string back to back with another quoted string so you'd get some kind of compiler error.
+ GCC would yell at you for some reason.
+ But if I instead put backslash there and backslash there, so now I have double quote, backslash double quote, this will actually print properly.
+ So, when in doubt, if you're having some weird character issue, odds are you need to escape it in some way.
+ It gets really kind of trippy if you wanna output a backslash, you can't just use the backslash, you need to use backslash backslash because otherwise a single backslash is confused with the so called escape character.
+ which is actually the special character that's used at the end of a string to say no more string after this point in memory.
+ Okay, not to dwell too much on math because you can very quickly bore someone in computer science by dwelling too much on math but it's useful even for logical constructs as we'll see with loops.
+ You do have mathematical operators in C and most every language.
+ Most of these are probably self explanatory, addition, subtraction, multiplication, division, and anyone? [ Inaudible Remark ] >> Mod or remainder.
+ So, there's subtle difference there.
+ But we'll use this over time but the percent sign essentially gives you the remainder.
+ So if you do for instance 11 divided by 10 in grade school, that's 1 with the remainder of 1.
+ So if you actually do in a program 11 percent 10, what you'll get back is 1 because that is in fact the remainder of that arithmetic operation.
+ So, there is more useful purposes than that than just taking remainders.
+ We'll actually see it's a wonderful way of effectively looping yourself back around, for instance if you're at the end of the alphabet or for other tricks altogether.
+ So what about those variables? Well, it turns out C, like a lot of languages, comes out of the box with a whole bunch of built-in variable types.
+ So in C, this is not going to be the case as we'll see with PHP and in JavaScript, at least not as rigorously.
+ In C, you really have to be specific as to what data type, what type of data you're gonna put in a variable partly because C gives us so low level access to your computer's hardware and memory that you have to tell your program what kind of variable you're gonna use so that the operating system knows how much memory to actually give you.
+ And with this low level power as we'll see, as I hinted before, comes a lot of fun, interesting, scary security implications.
+ 'Cause when you can actually manipulate a computer's memory at this low level, you can steal people's passwords, you can steal their data if you know how that memory is laid out.
+ So we'll-- more on that as time passes.
+ So the types that come built into C are several but the most common ones or the most useful ones for our purposes are char.
+ If you just wanna store a single character that maybe the user typed in, you just call the variable of type char.
+ Float is a floating point number which is like a real number, something with the digits after the decimal point, and it's fairly small, it's what we're gonna call 32 bits.
+ A double is also a float but it has twice as much storage capacity.
+ So here is one of the interesting takeaways, a char, we've already spoiled this answer, takes up how many bits.
+ Here is the char, here is the char, how many bits did we say each of these squares is? >> 8.
+ >> So 8 bits, aka 1 byte.
+ So a char size is 1 byte or 8 bits.
+ This is convention, so on almost-- and most any computer you overuse, if you're writing code that uses a char, you're gonna be handed 8 bits or 1 byte to store that particular char.
+ This is useful especially when we get to details like forensics and looking at data on a hard drive, 'cause if you don't know how much store-- how many bits are composing your file, you're never gonna recover that data or be able to access what you're looking for.
+ Now a float is not 1 byte, it's 4 bytes, or 4 times 8, 32 bits.
+ So, a 32 bit of float gives you a bunch of precision.
+ So a floating point value again is a number with a decimal point, so it depends.
+ It's a tradeoff.
+ You can either have a big number and a small decimal point or small number and a big decimal point.
+ But because you only have a finite number of bits, the takeaway for today is that there's only so much precision.
+ With the computer today, you can, for the most part, not represent every possible number that mankind can think of.
+ Because you can come up with an infinite number of values but if you have a finite amount of space and certainly a computer has a finite amount of disk space or RAM, you have to make approximations.
+ And that turns out, approximations might sometimes be fine, certainly for the small programs we've seen thus far.
+ But when you start doing scientific research or financial work, imprecision and rounding errors start to add up.
+ Those of you may have seen Superman 3 or Office Space, this little scam where they make money in the financial markets by scheming fractions of pennies off.
+ That kind of problem tends to arise because they're using a language or a computer that only has finite precision and so there are rounding errors.
+ And so the guys in Office Space took that money and they-- their for loop-- way too fast is-- was the takeaway in that movie, when they freaked out because they had million dollars or something like that overnight.
+ Okay, too long of a digression.
+ So, primitive type besides those three types, we have ints which are just integers which are similarly 32 bits.
+ And just to plant this seed with 32 bits, what's the biggest number you can represent? So it's 2 to the 32, 'cause remember a bit is a 0 or 1.
+ So if I have 32 bits, each of which can be a 0 or 1, that's two possibilities for every place, so 2 to the 32, that's 4 billion.
+ So with an integer, an int data type, you can store any number between 0 and 4 billion roughly.
+ Or if you want negative numbers, between negative 2 billion and positive 2 billion, but it's a finite range.
+ And as we'll see, this can in fact be problematic.
+ In fact, when Facebook first debuted, random aside, they used I believe an int to represent your profile IDs.
+ But if you've looked at more recent [inaudible] or if you've looked at friends who relatively recently signed up for Facebook, their profile IDs which you sometimes see in the URL are actually pretty long and that's because I believe at some point they did transition to 64-bit values which tend to be called long longs.
+ And this is so that they could have more possible user IDs not because they have billions and billions of users but surely people create accounts to lead accounts and they don't necessarily have to reuse numbers this way.
+ So, that might be a complete lie but I think the numbers are now 64 bits, so we'll see, I'll take a look.
+ Alright, so it turns out there're two other useful types that you don't get for free out of the box.
+ One is a bool.
+ So we talked about Mr.
+ Bool briefly last week in this idea of true or false, but in C, you don't have a Boolean data type.
+ There is no such thing as true or false.
+ You have to fake it by using 0 or 1.
+ This is just a little inelegant and so one of the things we'll introduce early on is this idea of abstraction or design whereby if you wanna represent the ideas of 0 and 1, true or false, well, let's give them a synonym like true or false.
+ Let's not just arbitrarily say the number 0 is false, the number 1 is true.
+ You can actually declare in C synonyms using special syntax that says, you know what, even though yes at the end of the day I'm implementing false as a 0 and true as a 1, I can abstract away from that detail and use words that are more intuitive to me like true and false.
+ So earlier today when I showed these little snippets of infinite loops with while true, true is we've inserted it ourselves because we're assuming you're using the CS50 library.
+ >> In other languages, C++, Java have the bool data type built in.
+ Strings, this also is a little white lie.
+ We've been using strings thus far to get input from user and store it in variables.
+ String is actually not a data type in C.
+ It actually is something called a char star and we'll come back to this before long.
+ But a char we've seen, a character being a single character.
+ A star is something called a pointer so it turns out a string is not quite what I'm describing it to be here.
+ It turns out when we call string a string, we're really referring not to those characters but to the address, the location and memory of those characters.
+ But, uninteresting for now but a teaser of details to come.
+ This chart, very boring and uninteresting but useful over time and that is to say there are very well defined rules as to when you're writing code, what operators, like what syntax should get evaluated first.
+ You might recall from grade school sometimes you put things in parentheses so that your addition happens first, then your multiplication, otherwise multiplication would happen by default first.
+ Realize in programming languages like C, there is a set of very well-defined rules, and this is in the recommended books.
+ There're various resources online.
+ I just want to make mention of this in case there's ever doubt, generally parentheses do solve your problem as an arithmetic but do realize this is some lower level details we'll come back to over time.
+ So we looked at a number of fairly small programs that at the end of the day did very little more than print hello world and the like.
+ There are so many other constructs like loops and conditions and such, so what I thought we do in conclusion today is look at this program.
+ So, we'll talk about this other axis of style on the course, writing code that looks pretty and as well aesthetically laid out.
+ So this is kind of a misinterpretation of that idea.
+ Writing code that just looks-- I'm not even sure what this is supposed to look like, a little flower or pinwheel or something like that.
+ It is in fact syntactically valid.
+ The semicolons are where they could be or should be.
+ I'm not quite sure what this is but it is-- notice the familiar constructs, there's some ifs, some whiles, some fors, these are details we'll certainly start playing with in great detail.
+ Let me go ahead and compile this.
+ This two is from that obfuscated C contest so this is not where we're going but this is where some people choose to go.
+ Let me go ahead and compile this.
+ Lots of errors but we've seen this error before.
+ Undefined reference, what was the solution last time? >> Library.
+ >> So we need a library.
+ It turns out there's other libraries we'll see over time.
+ One is the math library.
+ You might wanna say dash L math but it turns out it's so common that people just say dash LM.
+ And then for this stuff up here, it turns out and I know this is just from experience, this is called the Ncurses library.
+ This is a-- somewhat graphical library that allows me to display graphics on the screen.
+ So if I link in both of those libraries, now it compiles okay.
+ If I now run a.
+out, your teaser for this Friday's lecture is this climax.
+ [ Inaudible Remark ] >> I know.
+ See you on Friday.
+ [ Inaudible Discussion ] [ Music ]

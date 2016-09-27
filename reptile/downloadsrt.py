@@ -24,12 +24,10 @@ def download_srt():
             srt_cn.write(srt_content_cn.read())
             srt_cn.close()
             print 'The chinese subtitle of  Lesson', i + 1, 'has been successfully saved to document_original/', srt_filename_cn, '!'
-            # print '第', i + 1, '课的中文字幕已写入document_original文件夹下的', str(srt_filename_cn), '文件！'
             srt_en = open(srt_dirname_en, 'wb')
             srt_en.write(srt_content_en.read())
             srt_en.close()
             print 'The english subtitle of  Lesson', i + 1, 'has been successfully saved to document_original/', srt_filename_en, '!'
-            # print '第', i + 1, '课的英文字幕已写入document_original文件夹下的', str(srt_filename_en), '文件！'
     else:
         print 'You should get the original json data by run get_original_data.py first!'
 

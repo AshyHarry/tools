@@ -15,22 +15,18 @@ def del_blankline(infile, outfile):
     return 0
 
 
-dir_here = os.getcwd()
-in_dir = dir_here + '\document_original'
-out_dir = dir_here + '\document\document_formated'
-if not os.path.exists(out_dir):
-    os.makedirs(out_dir)
-for parent,dirnames,filenames in os.walk(in_dir):
-    for dirname in  dirnames:
-        print "parent is:" + parent
-        print  "dirname is" + dirname
-    for filename in filenames:
-        print "parent is:"+ parent
-        print "filename is:" + filename
-        print "the full name of the file is:" + os.path.join(parent,filename),type(os.path.join(parent,filename))
-        out_file = out_dir+ '\\' + filename + '_fromated'
-        print out_file
-        del_blankline(os.path.join(parent,filename),out_file)
-
-# if __name__ == "__main__":
-#     del_blankline("session1.txt", "new_session1.txt")
+if __name__ == "__main__":
+    dir_here = os.getcwd()
+    in_dir = dir_here + '\document\document_original'
+    out_dir = dir_here + '\document\document_formated'
+    if not os.path.exists(in_dir):
+        print 'Please download original srt file frist!'
+        exit()
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+    for parent, dirnames, filenames in os.walk(in_dir):
+        for filename in filenames:
+            in_file = os.path.join(parent, filename)
+            out_file = out_dir + '\\' + filename[:-4] + '_fromated.txt'
+            del_blankline(in_file, out_file)
+            print 'The subtitle file ' + filename + ' has been successfully saved to ', out_file, '!'

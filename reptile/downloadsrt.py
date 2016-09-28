@@ -5,17 +5,19 @@ import json
 
 
 def download_srt():
-    ori_dir = 'C:\\Users\\the__\\PycharmProjects\\tools\\reptile\\document_original'
+    dir_here = os.getcwd()
+    ori_dir = dir_here + '\document_original'
+    ori_fp = ori_dir + '\original_data.txt'
     if os.path.exists(ori_dir):
-        ori_fp = open(r'C:\Users\the__\PycharmProjects\tools\reptile\document_original\original_data.txt', 'r')
-        url_json = json.load(ori_fp)
-        ori_fp.close()
+        fp = open(ori_fp, 'r')
+        url_json = json.load(fp)
+        fp.close()
         video_list = url_json['data']['videoList']
         for i in range(len(video_list)):
             url_srt_cn = video_list[i]['subList'][0]['subUrl']
             url_srt_en = video_list[i]['subList'][1]['subUrl']
-            srt_filename_cn = 'lesson' + str(i) + '_cn.txt'
-            srt_filename_en = 'lesson' + str(i) + '_en.txt'
+            srt_filename_cn = 'lesson' + str(i+1) + '_cn.txt'
+            srt_filename_en = 'lesson' + str(i+1) + '_en.txt'
             srt_dirname_cn = ori_dir + '\\' + srt_filename_cn
             srt_dirname_en = ori_dir + '\\' + srt_filename_en
             srt_content_cn = urllib2.urlopen(url_srt_cn)

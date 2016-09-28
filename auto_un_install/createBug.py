@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
+
+from devicesinfo import get_devicesinfo
+
 package_name = 'com.leo.basesecret'
 # apk_dir_path = r'\\192.168.1.200\out\xbase\debug\1.6.0' # 开发包
 apk_dir_path = r'\\192.168.1.200\out\xbase\proguard\1.6.0' # 混淆包
@@ -21,10 +24,7 @@ story_names = {
     'HIDE-559': 'Message--张衡',
 }
 
-devices = {
-    "Sony D6503": "Android 6.0 -- 1080*1920",
-    "Samsung note5": "Android 6.0 -- 1440*2560",
-}
+devices = get_devicesinfo()
 
 
 def get_newest_apk(apk_dir_path):
@@ -80,9 +80,10 @@ def generate_devices(newest_apk_path, story_names, devices):
     with open(file_name, 'w') as f:
         for story_name in story_names:
             f.write("".join(["【", story_name, "】: ", story_names[story_name], '\n']))
-        f.write('\n')
-        for device in devices:
-            f.write("".join(['手机信息: ', device, " -- ", devices[device], '\n']))
+        f.write('\n\n')
+        f.write(devices)
+        # for device in devices:
+            # f.write("".join(['手机信息: ', device, " -- ", devices[device], '\n']))
         f.write('\n')
         f.write("".join(["安装包: ", newest_apk_path, '\n' * 2]))
         f.write("".join(['用 "', newest_apk_path, '" 进行验证，此问题已解决', '\n' * 2]))

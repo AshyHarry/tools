@@ -28,8 +28,8 @@ def get_devicesinfo():
         sdk_version = dev_content.read().rstrip()[-3:-1]
         android_version = version_sdk[sdk_version]
         devicesinfo =  devinfo_btext + ' ' + devinfo_mtext + ', ' + android_version
-        return devicesinfo
+        return '手机信息：' + devicesinfo
 
 
 if __name__ == '__main__':
-    print get_devicesinfo()
+    print '手机信息：' + get_devicesinfo()

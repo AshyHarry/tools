@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
-
+import sys
 package_name = 'com.leo.basesecret'
-apk_dir_path = r'\\192.168.1.200\out\xbase\debug\1.6.0' # 开发包
-# apk_dir_path = r'\\192.168.1.200\out\secret_space_proguard' # 混淆包
+# apk_dir_path = r'\\192.168.1.200\out\xbase\debug\1.6.0' # 开发包
+apk_dir_path = r'\\192.168.1.200\out\xbase\proguard\1.6.0' # 混淆包
 
 story_names = {
     'HIDE-581': '举报Base--杨月峰',
@@ -88,6 +87,7 @@ def generate_devices(newest_apk_path, story_names, devices):
         f.write("".join(["安装包: ", newest_apk_path, '\n' * 2]))
         f.write("".join(['用 "', newest_apk_path, '" 进行验证，此问题已解决', '\n' * 2]))
         f.write("".join(['用 "', newest_apk_path, '" 进行验证，此问题并未解决，故将其Reopen，请开发重修', '\n' * 2]))
+        f.close()
     os.system("D:\devices.txt")
     return 0
 
@@ -97,3 +97,4 @@ if __name__ == '__main__':
     # apk_path = r"\\192.168.1.200\out\secret_space_proguard\secret-share_v1.5.0_2016_09_02_14_11_36_proguard.apk" # 使用特定包时
     reinstall(apk_path, package_name)
     generate_devices(apk_path, story_names, devices)
+    sys.exit(1)

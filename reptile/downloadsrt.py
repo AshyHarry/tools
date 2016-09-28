@@ -6,7 +6,9 @@ import json
 
 def download_srt():
     dir_here = os.getcwd()
-    ori_dir = dir_here + '\document_original'
+    ori_dir = dir_here + '\document\document_original'
+    if not os.path.exists(ori_dir):
+        os.makedirs(ori_dir)
     ori_fp = ori_dir + '\original_data.txt'
     if os.path.exists(ori_dir):
         fp = open(ori_fp, 'r')

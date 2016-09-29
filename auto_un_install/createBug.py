@@ -24,7 +24,7 @@ story_names = {
     'HIDE-559': 'Message--张衡',
 }
 
-devices = get_devicesinfo()
+
 
 
 def get_newest_apk(apk_dir_path):
@@ -43,7 +43,7 @@ def format_current_time():
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
 
-def reinstall(apk_path, package_name):
+def reinstall(apk_path, package_name,devices):
     import os
     try:
         print(u'正在卸载旧安装包，请稍候...')
@@ -55,9 +55,10 @@ def reinstall(apk_path, package_name):
     os.system('adb install ' + '"' + apk_path + '"' + ' > install.tmp')
     print(u'Congratulations!! 新安装包安装成功')
     log_file = package_name.split('.')[-1:][0] + '.log'
-    product_name = get_product_name()
+    # product_name = get_product_name()
+    product_name = devices+'\n'
     with open(log_file, 'a') as f:
-        f.write("".join([format_current_time(), ' ', apk_path, ' ', product_name, '']))
+        f.write("".join([format_current_time(), ' ', apk_path, ' was installed to ', product_name]))
 
 
 def get_product_name():
@@ -81,21 +82,20 @@ def generate_devices(newest_apk_path, story_names, devices):
         for story_name in story_names:
             f.write("".join(["【", story_name, "】: ", story_names[story_name], '\n']))
         f.write('\n\n')
-        f.write(devices)
-        # for device in devices:
-            # f.write("".join(['手机信息: ', device, " -- ", devices[device], '\n']))
+        f.write(''.join(['手机信息',devices]))
         f.write('\n')
         f.write("".join(["安装包: ", newest_apk_path, '\n' * 2]))
         f.write("".join(['用 "', newest_apk_path, '" 进行验证，此问题已解决', '\n' * 2]))
         f.write("".join(['用 "', newest_apk_path, '" 进行验证，此问题并未解决，故将其Reopen，请开发重修', '\n' * 2]))
         f.close()
-    os.system("D:\devices.txt")
+    # os.system("D:\devices.txt")
     return 0
 
 
 if __name__ == '__main__':
+    devices = get_devicesinfo()
     apk_path = get_newest_apk(apk_dir_path) # 使用最新包时
     # apk_path = r"\\192.168.1.200\out\secret_space_proguard\secret-share_v1.5.0_2016_09_02_14_11_36_proguard.apk" # 使用特定包时
-    reinstall(apk_path, package_name)
+    reinstall(apk_path, package_name,devices)
     generate_devices(apk_path, story_names, devices)
     sys.exit(1)

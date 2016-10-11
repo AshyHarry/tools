@@ -1,6 +1,3 @@
 .idea/*
 reptile/document/*
-reptile/__init__.pyc
-reptile/document/
-reptile/downloadsrt.pyc
-reptile/get_orignal_data.pyc
+auto_un_install/install.tmp

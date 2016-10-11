@@ -54,7 +54,7 @@ def reinstall(apk_path, package_name,devices):
     print(apk_path)
     os.system('adb install ' + '"' + apk_path + '"' + ' > install.tmp')
     print(u'Congratulations!! 新安装包安装成功')
-    log_file = package_name.split('.')[-1:][0] + '.log'
+    log_file = 'log.log'
     # product_name = get_product_name()
     product_name = devices+'\n'
     with open(log_file, 'a') as f:

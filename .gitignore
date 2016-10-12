@@ -1,3 +1,4 @@
 .idea/*
 reptile/document/*
 auto_un_install/install.tmp
+auto_un_install/conf.conf

@@ -3,9 +3,13 @@ import sys
 
 from devicesinfo import get_devicesinfo
 
-package_name = 'com.leo.basesecret'
+# package_name = 'com.leo.basesecret'
+package_name = 'com.leo.appmaster'
+# package_name = 'com.leo.appmaster'
 # apk_dir_path = r'\\192.168.1.200\out\xbase\debug\1.6.0' # 开发包
-apk_dir_path = r'\\192.168.1.200\out\xbase\proguard\1.6.0' # 混淆包
+# apk_dir_path = r'\\192.168.1.200\out\xbase\proguard\1.6.0' # 混淆包
+# apk_dir_path = r'\\192.168.1.200\out\xbase\release\1.6.0' # 混淆包
+apk_dir_path = r'\\192.168.1.200\out\leoprivacy\proguard\4.1'
 
 story_names = {
     'HIDE-581': '举报Base--杨月峰',
@@ -52,7 +56,7 @@ def reinstall(apk_path, package_name,devices):
         print(u'旧安装包卸载过程出错，可能之前已卸载')
     print(u'正在安装最新安装包，请稍候...:')
     print(apk_path)
-    os.system('adb install ' + '"' + apk_path + '"' + ' > install.tmp')
+    os.system('adb install ' + '"' + apk_path + '"')# + ' > install.tmp')
     print(u'Congratulations!! 新安装包安装成功')
     log_file = 'log.log'
     # product_name = get_product_name()

@@ -17,7 +17,6 @@ def get_devicesinfo():
     devices = os.popen('adb devices')
     res = devices.read()
     if res[26:] == '':
-        print 'No devices connected!'
         return 0
     else:
         devinfo_mode = os.popen('adb shell cat /system/build.prop |find "ro.product.mode"')

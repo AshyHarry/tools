@@ -15,7 +15,7 @@ def get_original_data():
     with open(ori_file, 'w') as fp:
         fp.write(original_data.content)
         # json.dump(original_data.json(), fp) #write the original json data to original_data.txt in document_original
-    print 'The original json data has been successfully saved to document_original/original_data.txt ','!'
+    print ('The original json data has been successfully saved to document_original/original_data.txt ','!')
     return 0
 
 if __name__ == '__main__':

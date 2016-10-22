@@ -2,6 +2,7 @@
 import re
 import requests
 from lxml import etree
+from html import escape
 
 
 def get_courselist(course_url):
@@ -11,14 +12,16 @@ def get_courselist(course_url):
     '''
 
     html_source_list = requests.get(url=course_url)
-    html = html_source_list.text.encode('utf-8')
+    html = html_source_list.text#.encode('utf-8')
     doc = etree.HTML(html)
-    url_courses = doc.xpath('//*[@id="list2"]//*[@class="u-ctitle"]/a')
-    # url_courses = doc.xpath('//*[@id="list2"]/a')
-    url_courses = doc.xpath('/html/body/div[6]/div[0]/table[1]/tbody/a')
+    # url_courses = doc.xpath('//*[@id="list2"]//*[@class="u-ctitle"]/a')
+    url_courses = doc.xpath('//*/body/*/div/*/table/*/td/a')
+    # url_courses = doc.xpath('/html/body/div[6]/div[0]/table[1]/tbody/a')
     courselist = []
     for dummy_url in url_courses:
-        courselist.append(dummy_url.get("href"))
+        if dummy_url.get('href') != None:
+            if dummy_url.get('href') not in courselist:
+                courselist.append(dummy_url.get('href'))
     return courselist
 
 
@@ -32,7 +35,7 @@ def get_videolist(courselist):
         video_doc = doc.xpath('/html/body/script[14]/text()')
         tmp_list.append(re.findall('http.*?\.m3u8', video_doc[0]))
     for i in range(len(tmp_list)):
-        videolist.append(tmp_list[i][0].encode('utf-8'))
+        videolist.append(tmp_list[i][0])#.encode('utf-8'))
     return videolist
 
 

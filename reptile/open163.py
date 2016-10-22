@@ -2,24 +2,26 @@
 import re
 import requests
 from lxml import etree
-from html import escape
+from pprint import pprint
 
 
 def get_courselist(course_url):
-    '''
+    """
     this method get every course url from the url given
     now it can used to get every course in ope..163.com
-    '''
+    :param course_url:
+    :return:
+    """
 
     html_source_list = requests.get(url=course_url)
-    html = html_source_list.text#.encode('utf-8')
+    html = html_source_list.text
     doc = etree.HTML(html)
     # url_courses = doc.xpath('//*[@id="list2"]//*[@class="u-ctitle"]/a')
     url_courses = doc.xpath('//*/body/*/div/*/table/*/td/a')
     # url_courses = doc.xpath('/html/body/div[6]/div[0]/table[1]/tbody/a')
     courselist = []
     for dummy_url in url_courses:
-        if dummy_url.get('href') != None:
+        if dummy_url.get('href') is not None:
             if dummy_url.get('href') not in courselist:
                 courselist.append(dummy_url.get('href'))
     return courselist
@@ -28,14 +30,15 @@ def get_courselist(course_url):
 def get_videolist(courselist):
     videolist = []
     tmp_list = []
-    for i in range(len(courselist)):
-        detail = requests.get(courselist[i])
+    for dummy_index in range(len(courselist)):
+        detail = requests.get(courselist[dummy_index])
         html_detail = detail.text
         doc = etree.HTML(html_detail)
         video_doc = doc.xpath('/html/body/script[14]/text()')
         tmp_list.append(re.findall('http.*?\.m3u8', video_doc[0]))
-    for i in range(len(tmp_list)):
-        videolist.append(tmp_list[i][0])#.encode('utf-8'))
+    for dummy_index in range(len(tmp_list)):
+        dummy_list = tmp_list[dummy_index][0].replace('.m3u8', '.mp4')
+        videolist.append(dummy_list)
     return videolist
 
 
@@ -43,8 +46,8 @@ def get_srtlist(courselist):
     dummy_srtlist = []
     srtlist_cn = []
     srtlist_en = []
-    for i in range(len(courselist)):
-        dummy_srtlist0 = courselist[i].replace('.html', '.xml')
+    for dummy_index in range(len(courselist)):
+        dummy_srtlist0 = courselist[dummy_index].replace('.html', '.xml')
         dummy_srtlist1 = dummy_srtlist0.replace(dummy_srtlist0[-35:-23], dummy_srtlist0[-28:-23] + '2_')
         dummy_srtlist2 = dummy_srtlist1.replace('open.163.com', 'live.ws.126.net')
         dummy_srtlist.append(dummy_srtlist2)
@@ -73,8 +76,8 @@ def get_srtlist(courselist):
     #     else:
     #         print ("This course has no caption2!")
 
-    for i in range(len(dummy_srtlist)):
-        dummy_url = dummy_srtlist[i]
+    for dummy_index in range(len(dummy_srtlist)):
+        dummy_url = dummy_srtlist[dummy_index]
         xml_res = requests.get(dummy_url)
         xml_doc = xml_res.text.encode('utf-8')
         doc = etree.XML(xml_doc)
@@ -83,6 +86,7 @@ def get_srtlist(courselist):
         srtlist_cn.append(res_url[0])
         srtlist_en.append(res_url[1])
     return srtlist_cn, srtlist_en
+
 
 # def download_srt(download_url):
 #     dir_here = os.getcwd()
@@ -109,10 +113,23 @@ def get_srtlist(courselist):
 
 if __name__ == '__main__':
     url = 'http://open.163.com/special/opencourse/cs50.html'
-    course = get_courselist(url)
-    video = get_videolist(course)
-    caption_cn, caption_en = get_srtlist(course)
-    print(course)
-    print(video)
-    print(caption_cn)
-    print(caption_en)
+    course_list = get_courselist(url)
+    video = get_videolist(course_list)
+    caption_cn, caption_en = get_srtlist(course_list)
+    course = {}
+    for i in range(len(course_list)):
+        course['lesson' + str(i + 1)] = {
+            'video': video[i],
+            'chinese caption': caption_cn[i],
+            'english caption': caption_en[i]
+        }
+    pprint(course_list)
+    # pprint(video)
+    # pprint(caption_cn)
+    # pprint(caption_en)
+    # pprint(course)
+    # print(type(course))
+    # print(type(course[0]))
+    pp = course['lesson16']['video']
+    print(pp)
+    print(course['lesson3']['chinese caption'])

@@ -20,7 +20,7 @@ if __name__ == "__main__":
     in_dir = dir_here + '\document\document_original'
     out_dir = dir_here + '\document\document_formated'
     if not os.path.exists(in_dir):
-        print 'Please download original srt file frist!'
+        print('Please download original srt file frist!')
         exit()
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
@@ -29,4 +29,4 @@ if __name__ == "__main__":
             in_file = os.path.join(parent, filename)
             out_file = out_dir + '\\' + filename[:-4] + '_fromated.txt'
             del_blankline(in_file, out_file)
-            print 'The subtitle file ' + filename + ' has been successfully saved to ', out_file, '!'
+            print('The subtitle file ' + filename + ' has been successfully saved to ', out_file, '!')

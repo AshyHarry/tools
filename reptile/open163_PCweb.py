@@ -90,7 +90,6 @@ class Open163:
             xml_doc = xml_res.text.encode('utf-8')
             doc = etree.XML(xml_doc)
             res_url = doc.xpath('/all/subs/sub/url/text()')
-            # res_lang = doc.xpath('/all/subs/sub/name/text()')
             try:
                 self.srtlist_cn.append(res_url[0])
             except:
@@ -111,37 +110,61 @@ class Open163:
         return self.course
 
 
-def download_srt(download_url, filename):
-    dir_here = os.getcwd()
-    ori_dir = dir_here + '\document\srt'  # set the dictionary to get original json data
+def get_srt(download_url, filename):
+    dir_abs = os.path.realpath(__file__)
+    dir_here = os.path.dirname(dir_abs)
+    ori_dir = dir_here + '\document\srtPC'  # set the dictionary to get original json data
     if not os.path.exists(ori_dir):
         os.makedirs(ori_dir)
-    tmp_srt = urllib.request.urlopen(download_url)
+    print('Caption of ' + filename + ' is doloading...')
+    tmp_srt = requests.get(download_url)
     full_filename = ori_dir + '\\' + filename + '.txt'
     with open(full_filename, 'wb') as f:
-        f.write(tmp_srt.read())
-    dummy_lines = tmp_srt.readlines()
+        f.write(tmp_srt.text.encode('UTF-8'))
+    print('Caption of '+ filename + 'download complete! ')
+    fp = open(full_filename, 'r', encoding='UTF-8')
+    dummy_lines = fp.readlines()
+    fp.close()
+    dummy_fp = open(full_filename, 'w', encoding='UTF-8')
     for li in dummy_lines:
-        pprint(li)
+        if re.findall('\d\d:.*', li):
+            pass
+        elif re.findall('[1-90]\d*\n', li):
+            pass
+        elif re.findall('\[.*?]', li):
+            pass
+        elif not li.split():
+            pass
+        elif re.findall('【', li):
+            pass
+        else:
+            dummy_li = li.strip('\n').strip('>>').strip(' ').rstrip('\n')
+            if re.findall('\.$', dummy_li) or re.findall('\?$', dummy_li) \
+                    or re.findall(';$', dummy_li) or re.findall('!$', dummy_li):
+                dummy_fp.write(dummy_li + '\n')
+            else:
+                dummy_fp.write(dummy_li + ' ')
+    dummy_fp.close()
     return 0
 
 
 if __name__ == '__main__':
     url = 'http://open.163.com/special/opencourse/cs50.html'
-    # courses = Open163()
-    # courses.set_url(url)
-    # cou = courses.get_courselist()
-    # video = courses.get_videolist()
-    # srt_cn, srt_en = courses.get_srtlist()
-    # srt = courses.format()
+    courses = Open163()
+    courses.set_url(url)
+    cou = courses.get_courselist()
+    video = courses.get_videolist()
+    srt_cn, srt_en = courses.get_srtlist()
+    srt = courses.format()
     # pprint(cou)
     # pprint(video)
     # pprint(srt)
-    # if len(srt_cn) != 0:
-    #     for i in range(len(srt_cn)):
-    #         download_srt(srt_cn[i], 'lesson' + str(i) + '_cn')
-    # if len(srt_en) != 0:
-    #     for i in range(len(srt_en)):
-    #         download_srt(srt_en[i], 'lesson' + str(i) + '_en')
+    if len(srt_cn) != 0:
+        for i in range(len(srt_cn)):
+            get_srt(srt_cn[i], 'lesson' + str(i + 1) + '_cn')
+    if len(srt_en) != 0:
+        for i in range(len(srt_en)):
+            get_srt(srt_en[i], 'lesson' + str(i + 1) + '_en')
 
-    download_srt('http://oc-caption-srt.nos.netease.com/oc-srt-1427263334216.srt', str(1))
+    # download_srt('http://oc-caption-srt.nos.netease.com/oc-srt-1427263334216.srt', str(1))
+    # download_srt('http://oc-caption-srt.nos.netease.com/oc-srt-1427263776252.srt', str(1))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from devicesinfo import get_devicesinfo
+from auto_un_install.devicesinfo import get_devicesinfo
 from readconf import readconf
 
 
@@ -19,7 +19,7 @@ def format_current_time():
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
 
-def reinstall(apk_dir, package_name,devices):
+def reinstall(apk_dir, package_name, devices):
     apk_list = sorted(os.listdir(apk_dir))
     for apk in apk_list:
         if apk[-3:] not in ['apk']:
@@ -27,7 +27,7 @@ def reinstall(apk_dir, package_name,devices):
     newest_apk_name = apk_list[len(apk_list) - 1]
     newest_apk = apk_dir + '\\' + newest_apk_name
     if not devices:
-        print 'No devices connected!'
+        print('No devices connected!')
     else:
         try:
             print(u'正在卸载旧安装包，请稍候...')

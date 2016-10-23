@@ -1,4 +1,5 @@
 .idea/*
 reptile/document/*
+reptile/run.py
 auto_un_install/log.log
 auto_un_install/log.txt

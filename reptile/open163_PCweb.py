@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 import os
 import re
-import urllib.request
-
 import requests
 from lxml import etree
 from pprint import pprint
@@ -121,7 +119,7 @@ def get_srt(download_url, filename):
     full_filename = ori_dir + '\\' + filename + '.txt'
     with open(full_filename, 'wb') as f:
         f.write(tmp_srt.text.encode('UTF-8'))
-    print('Caption of '+ filename + 'download complete! ')
+    print('Caption of ' + filename + 'download complete! ')
     fp = open(full_filename, 'r', encoding='UTF-8')
     dummy_lines = fp.readlines()
     fp.close()
@@ -156,7 +154,7 @@ if __name__ == '__main__':
     video = courses.get_videolist()
     srt_cn, srt_en = courses.get_srtlist()
     srt = courses.format()
-    # pprint(cou)
+    pprint(cou)
     # pprint(video)
     # pprint(srt)
     if len(srt_cn) != 0:

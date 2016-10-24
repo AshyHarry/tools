@@ -30,12 +30,14 @@ class Open163:
         html = html_source_list.text
         doc = etree.HTML(html)
         # url_courses = doc.xpath('//*[@id="list2"]//*[@class="u-ctitle"]/a')
-        url_courses = doc.xpath('//*/body/*/div/*/table/*/td/a')
+        # url_courses = doc.xpath('//*/body/*/div/*/table/*/td/a')
+        url_courses = doc.xpath('//*[@id="list2"]//*[@class="u-ctitle"]//@href')
         # url_courses = doc.xpath('/html/body/div[6]/div[0]/table[1]/tbody/a')
-        for dummy_url in url_courses:
-            if dummy_url.get('href') is not None:
-                if dummy_url.get('href') not in self.courselist:
-                    self.courselist.append(dummy_url.get('href'))
+        # for dummy_url in url_courses:
+        #     if dummy_url.get('href') is not None:
+        #         if dummy_url.get('href') not in self.courselist:
+        #             self.courselist.append(dummy_url.get('href'))
+        self.courselist = url_courses
         return self.courselist
 
     def get_videolist(self):
@@ -44,7 +46,8 @@ class Open163:
             detail = requests.get(self.courselist[dummy_index])
             html_detail = detail.text
             doc = etree.HTML(html_detail)
-            video_doc = doc.xpath('/html/body/script[14]/text()')
+            # video_doc = doc.xpath('/html/body/script[14]/text()')
+            video_doc = doc.xpath('//script[14]/text()')
             tmp_list.append(re.findall('http.*?\.m3u8', video_doc[0]))
         for dummy_index in range(len(tmp_list)):
             dummy_list = tmp_list[dummy_index][0].replace('.m3u8', '.mp4')
@@ -87,7 +90,8 @@ class Open163:
             xml_res = requests.get(dummy_url)
             xml_doc = xml_res.text.encode('utf-8')
             doc = etree.XML(xml_doc)
-            res_url = doc.xpath('/all/subs/sub/url/text()')
+            # res_url = doc.xpath('/all/subs/sub/url/text()')
+            res_url = doc.xpath('//sub/url/text()')
             try:
                 self.srtlist_cn.append(res_url[0])
             except:

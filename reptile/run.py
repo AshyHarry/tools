@@ -57,7 +57,7 @@ if __name__ == '__main__':
     srt_cn, srt_en = courses.get_srtlist()
     srt = courses.format()
     # pprint(courselist)
-    # pprint(video)
+    pprint(video)
     # pprint(srt)
     dummy_srtlist = []
     for dummy_index in range(len(courselist)):
@@ -78,3 +78,4 @@ if __name__ == '__main__':
         # pprint(res_url)
         # print(type(res_url))
     pprint(srt)
+    # print(type(srt[0]))

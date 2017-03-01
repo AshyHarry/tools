@@ -1,7 +1,34 @@
 # -*- coding: utf-8 -*-
 import os
-from auto_un_install.devicesinfo import get_devicesinfo
 from readconf import readconf
+
+
+def get_devicesinfo():
+    version_sdk = {
+        '16': 'android4.1',
+        '17': 'android4.2',
+        '18': 'android4.3',
+        '19': 'android4.4',
+        '20': 'android4.4w',
+        '21': 'android5.0',
+        '22': 'android5.1',
+        '23': 'android6.0',
+        '24': 'android7.0'
+    }
+    devices = os.popen('adb devices')
+    res = devices.read()
+    if res[26:] == '':
+        return 0
+    else:
+        devinfo_mode = os.popen('adb shell cat /system/build.prop |find "ro.product.mode"')
+        devinfo_mtext = devinfo_mode.read().rstrip()[17:]
+        devinfo_brand = os.popen('adb shell cat /system/build.prop |find "ro.product.brand"')
+        devinfo_btext = devinfo_brand.read().rstrip()[17:]
+        dev_content = os.popen('adb shell getprop | find "ro.build.version.sdk"')
+        sdk_version = dev_content.read().rstrip()[-3:-1]
+        android_version = version_sdk[sdk_version]
+        devicesinfo = devinfo_btext + ' ' + devinfo_mtext + ', ' + android_version
+        return devicesinfo
 
 
 def get_newest_apk(apk_dir):
@@ -10,8 +37,9 @@ def get_newest_apk(apk_dir):
         if apk[-3:] not in ['apk']:
             apk_list.remove(apk)
     newest_apk_name = apk_list[len(apk_list) - 1]
-    newest_apk = apk_dir + '\\' + newest_apk_name
-    return newest_apk
+    newest_apk_path = apk_dir + os.sep + newest_apk_name
+    # newest_apk = apk_dir + '\\' + newest_apk_name
+    return newest_apk_path
 
 
 def format_current_time():
@@ -35,7 +63,8 @@ def reinstall(apk_dir, package_name, devices):
         except:
             print(u'旧安装包卸载过程出错，可能之前已卸载')
         print(u'正在安装最新安装包，请稍候...:')
-        os.system('adb install ' + package_name)
+        os.system('adb install ' + '"' + apk_dir)
+        # os.system('adb install ' + package_name)
         print(newest_apk)
         print(u'Congratulations!! 新安装包安装成功')
         log_file = 'log.log'

@@ -15,6 +15,17 @@ version_sdk = {
 
 
 def get_devicesinfo():
+    version_sdk = {
+        '16': 'android4.1',
+        '17': 'android4.2',
+        '18': 'android4.3',
+        '19': 'android4.4',
+        '20': 'android4.4w',
+        '21': 'android5.0',
+        '22': 'android5.1',
+        '23': 'android6.0',
+        '24': 'android7.0'
+    }
     devices = os.popen('adb devices')
     res = devices.read()
     if res[26:] == '':
